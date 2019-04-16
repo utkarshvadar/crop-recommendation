@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="{% url 'student:register' %}">Register</a></li>
+      <li><a href="{% url 'student:details' %}">Details</a> </li>
+      <li><a href="{% url 'student:course' %}">Course details</a></li>
+      <li><a href="{% url 'student:entroll' %}">Entroll student to course</a></li>
+    </ul>
+    {% block content %}{% endblock content %}
+  </div>
+</nav>
+    <div class="container">
+       <table class="table">
+           <tr>
+               <th>PRN no </th>
+               <th>First name </th>
+               <th>Middle name </th>
+               <th>Last name</th>
+               <th>Department</th>
+               <th>Email </th>
+               <th>Mobile</th>
+           </tr>
+            {% for stu in student_list%}
+           <tr>
+               <th>{{stu.PRN_no}}</th>
+               <th>{{stu.name}}</th>
+               <th>{{stu.middle_name}}</th>
+               <th>{{stu.surname}}</th>
+               <th>{{stu.dept}}</th>
+               <th>{{stu.email}}</th>
+               <th>{{stu.mobile}}</th>
+           </tr>
+           {% endfor %}
+       </table>
+    </div>
+</body>
+</html>

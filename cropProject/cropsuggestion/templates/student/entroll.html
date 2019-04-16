@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Entroll form for student</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="{% url 'student:register' %}">Register</a></li>
+      <li><a href="{% url 'student:details' %}">Details</a> </li>
+      <li><a href="{% url 'student:course' %}">Course details</a></li>
+      <li><a href="{% url 'student:entroll' %}">Entroll student to course</a></li>
+    </ul>
+    {% block content %}{% endblock content %}
+  </div>
+</nav>
+    <div class="container">
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+             {% for field in form %}
+
+                <div class="form-group">
+                    {{ field.label_tag }} {{ field }}
+                </div>
+            {% endfor %}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+    </div>
+</body>
+</html>

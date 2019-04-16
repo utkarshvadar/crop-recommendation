@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher register form</title>
+</head>
+<body>
+	
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="{% url 'student:register' %}">Register</a></li>
+      <li><a href="{% url 'student:details' %}">Details</a> </li>
+      <li><a href="{% url 'student:course' %}">Course details</a></li>
+      <li><a href="{% url 'student:entroll' %}">Entroll student to course</a></li>
+    </ul>
+    {% block content %}{% endblock content %}
+  </div>
+</nav>
+        <div class="container">
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+             {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }} {{ field }}
+                </div>
+            {% endfor %}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+    </div>
+</body>
+</html>
